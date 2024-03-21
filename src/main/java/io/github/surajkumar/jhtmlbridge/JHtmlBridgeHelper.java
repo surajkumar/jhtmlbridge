@@ -75,10 +75,10 @@ public class JHtmlBridgeHelper {
     }
 
     // Bind a Java method to an HTML event
-    public void bindEvent(String elementId, String eventName, String methodName) {
+    public void bindEvent(String elementId, String eventName, String alias, String methodName) {
         String script = "var element = document.getElementById('" + elementId + "');";
         script += "element.addEventListener('" + eventName + "', function() {";
-        script += "    jhtmlbridge." + methodName + "();";
+        script += " " + alias + "." + methodName + "(); ";
         script += "});";
         webView.getEngine().executeScript(script);
     }
