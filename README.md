@@ -1,5 +1,58 @@
 # JHtmlBridge
-Create User Interfaces using HTML and Java
+JHtmlBridge facilitates the creation of User Interfaces using HTML and Java, providing seamless integration between the two technologies.
+
+## Usage
+Using this library is straightforward:
+
+
+1. Instantiate JHtmlBridge:
+```java
+JHtmlBridge htmlBridge = new JHtmlBridge("www", "Example", 500, 500);
+```
+
+2. Define Java bindings:
+
+```java
+public class MyButtonHandler {
+    public void exampleButtonClick() {
+        System.out.println("Hello, World!");
+    }
+}
+// ...
+htmlBridge.bind("example", new MyButtonHandler());
+```
+
+3. Launch the Window
+```java
+htmlBridge.launch();
+```
+
+In this example the html files are stored in the `www` folder. Sample index.html
+
+```html
+<!DOCTYPE html>
+<html>
+<body>
+<h1>Hello, World!</h1><br>
+<button onclick="example.exampleButtonClick()">Click Me!</button>
+</body>
+</html>
+```
+
+If you want to pass arguments to your methods, simply pass the value to the method e.g. 
+```java
+public void exampleButtonClick(String name) {
+    System.out.println("Hello, " + name);
+}
+//...
+<button onclick="example.exampleButtonClick('John Smith')">Click Me!</button>
+```
+
+To retrieve the text content of an element, you can use the `JHtmlBridgeHelper`. 
+```java
+JHtmlBridgeHelper helper = htmlBridge.getHelper();
+String content = helper.getContentForElement("someId");
+```
 
 ## Getting Started as a Developer
 
@@ -17,10 +70,10 @@ Ensure you have the following tools installed:
 * Gradle 8.6 or higher, it is recommended to use the included Gradle wrapper
 
 ## How to Contribute
-Contributions are highly encouraged, regardless of whether it's a minor bug fix or a major feature enhancement. To get started, please follow these steps:
+Contributions are welcomed, whether it's a minor bug fix or a major feature enhancement. To contribute:
 
-1. **Fork the Repository**: Click the "Fork" button in the top-right corner of this repository. This will create a copy of the project in your GitHub account.
-2. **Create a Dedicated Branch**: Before making any changes, create a dedicated branch in your forked repository. This branch should be named appropriately to reflect the nature of your contribution (e.g., feature/new-command, bugfix/issue-123).
-3. **Implement Changes**: Make your desired changes in the dedicated branch. Ensure that your code adheres to the project's coding guidelines and style conventions. If applicable, include tests to validate your modifications.
-4. **Submit a Pull Request**: Once you're satisfied with your changes, submit a pull request (PR) back to this repository. In your PR description, provide a clear and concise summary of your changes, along with any relevant details that would help reviewers understand your contribution.
-5. **Collaborate and Iterate**: Be open to feedback and collaborate with the community to refine your contribution. We appreciate your effort and look forward to working together to improve the framework.
+1. Fork the Repository: Click "Fork" to create a copy in your GitHub account.
+2. Create a Dedicated Branch: Make changes in a dedicated branch reflecting the nature of your contribution.
+3. Implement Changes: Ensure adherence to coding guidelines and include tests if applicable.
+4. Submit a Pull Request: Provide a clear summary of changes and relevant details in the PR description.
+5. Collaborate and Iterate: Be open to feedback to refine your contribution and improve the framework.
