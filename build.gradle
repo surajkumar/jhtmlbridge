@@ -1,0 +1,41 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'com.diffplug.spotless' version '6.22.0'
+    id 'com.github.johnrengelman.shadow' version '8.1.1'
+    id 'org.openjfx.javafxplugin' version '0.1.0'
+}
+
+group = "io.github.surajkumar.jhtmlbridge"
+version = "1.0"
+
+repositories {
+    mavenCentral()
+}
+
+javafx {
+    version = "21.0.2"
+    modules = [ 'javafx.controls', 'javafx.swing', 'javafx.web' ]
+}
+
+dependencies {
+    implementation 'io.vertx:vertx-core:4.5.5'
+    implementation 'io.vertx:vertx-web:4.5.5'
+}
+
+spotless {
+    java {
+        removeUnusedImports()
+        importOrder()
+        googleJavaFormat()
+                .aosp()
+                .reflowLongStrings()
+                .formatJavadoc(true)
+                .reorderImports(true)
+                .groupArtifact('com.google.googlejavaformat:google-java-format')
+        trimTrailingWhitespace()
+        indentWithSpaces()
+        endWithNewline()
+        cleanthat()
+    }
+}
