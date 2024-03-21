@@ -1,5 +1,5 @@
 # JHtmlBridge
-JHtmlBridge facilitates the creation of User Interfaces using HTML and Java, providing seamless integration between the two technologies.
+Create Graphical User Interfaces in Java using HTML Java
 
 ## Usage
 Using this library is straightforward:
